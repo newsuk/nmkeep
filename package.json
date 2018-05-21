@@ -1,0 +1,61 @@
+{
+  "name": "@thetimes/nmkeep",
+  "version": "0.6.0",
+  "description": "Caches node_modules for your yarn monorepo",
+  "scripts": {
+    "pretty": "prettier *.ts tsconfig.json *.md",
+    "fmt": "yarn pretty --write",
+    "fmt:diff": "yarn pretty --list-different",
+    "cq": "eslint src",
+    "lint": "yarn fmt:diff && yarn cq",
+    "tsc": "tsc && chmod +x fetch.js && chmod +x store.js",
+    "test": "yarn tsc && nyc ava",
+    "coverage:report": "nyc report --reporter=html",
+    "prepublishOnly": "yarn tsc"
+  },
+  "bin": {
+    "nmstore": "./store.js",
+    "nmfetch": "./fetch.js"
+  },
+  "keywords": [
+    "yarn",
+    "cache",
+    "node_modules",
+    "build",
+    "fast"
+  ],
+  "author": "Craig Bilner",
+  "license": "BSD-3-Clause",
+  "ava": {
+    "failWithoutAssertions": false
+  },
+  "devDependencies": {
+    "@types/fs-extra": "5.0.2",
+    "@types/glob": "5.0.35",
+    "@types/node": "10.1.0",
+    "ava": "1.0.0-beta.4",
+    "eslint": "4.19.1",
+    "eslint-config-airbnb": "16.1.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-import": "2.11.0",
+    "eslint-plugin-jsx-a11y": "6.0.3",
+    "eslint-plugin-react": "7.8.2",
+    "nyc": "11.8.0",
+    "prettier": "1.12.1",
+    "typescript": "2.8.3"
+  },
+  "dependencies": {
+    "@types/tar": "4.0.0",
+    "aws-sdk": "2.235.1",
+    "chalk": "2.4.1",
+    "commander": "2.15.1",
+    "fs-extra": "6.0.0",
+    "glob": "7.1.2",
+    "hash-files": "1.1.1",
+    "lzma-native": "3.0.8",
+    "tar": "4.4.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
